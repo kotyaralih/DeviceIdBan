@@ -24,8 +24,8 @@ class CustomForm extends BaseForm{
 	public function __construct(
 		string $title,
 		private array $elements,
-		#[Immutable] private /*readonly*/ \Closure $onSubmit,
-		#[Immutable] private /*readonly*/ ?\Closure $onClose = null,
+		 private /*readonly*/ \Closure $onSubmit,
+		 private /*readonly*/ ?\Closure $onClose = null,
 	){
 		/** @phpstan-ignore-next-line */
 		Utils::validateCallableSignature(function(Player $player, CustomFormResponse $response){ }, $onSubmit);

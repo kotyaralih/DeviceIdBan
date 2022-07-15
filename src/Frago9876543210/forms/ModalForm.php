@@ -11,7 +11,7 @@ use pocketmine\utils\Utils;
 use function gettype;
 use function is_bool;
 
-#[Immutable]
+
 class ModalForm extends BaseForm{
 
 	/** @phpstan-param \Closure(Player, bool) : mixed $onSubmit */

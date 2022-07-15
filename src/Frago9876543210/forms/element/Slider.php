@@ -15,10 +15,10 @@ class Slider extends BaseElementWithValue{
 
 	public function __construct(
 		string $text,
-		#[Immutable] public /*readonly*/ float $min,
-		#[Immutable] public /*readonly*/ float $max,
-		#[Immutable] public /*readonly*/ float $step = 1.0,
-		#[Immutable] public /*readonly*/ ?float $default = null,
+		 public /*readonly*/ float $min,
+		 public /*readonly*/ float $max,
+		 public /*readonly*/ float $step = 1.0,
+		 public /*readonly*/ ?float $default = null,
 	){
 		parent::__construct($text);
 

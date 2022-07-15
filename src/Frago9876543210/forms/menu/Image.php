@@ -6,7 +6,7 @@ namespace Frago9876543210\forms\menu;
 
 
 
-#[Immutable]
+
 class Image implements \JsonSerializable{
 
 	private function __construct(public /*readonly*/ string $data, public /*readonly*/ string $type){ }

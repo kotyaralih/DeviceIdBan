@@ -9,7 +9,7 @@ use pocketmine\form\FormValidationException;
 
 abstract class BaseElement implements \JsonSerializable{
 
-	public function __construct(#[Immutable] public /*readonly*/ string $text){ }
+	public function __construct( public /*readonly*/ string $text){ }
 
 	abstract protected function getType() : string;
 

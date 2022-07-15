@@ -22,10 +22,10 @@ class MenuForm extends BaseForm{
 	 */
 	public function __construct(
 		string $title,
-		#[Immutable] public /*readonly*/ string $content = "",
+		 public /*readonly*/ string $content = "",
 		private array $buttons = [],
-		#[Immutable] private /*readonly*/ ?\Closure $onSubmit = null,
-		#[Immutable] private /*readonly*/ ?\Closure $onClose = null,
+		 private /*readonly*/ ?\Closure $onSubmit = null,
+		 private /*readonly*/ ?\Closure $onClose = null,
 	){
 		if($onSubmit !== null){
 			/** @phpstan-ignore-next-line */

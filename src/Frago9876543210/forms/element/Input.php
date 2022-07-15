@@ -14,8 +14,8 @@ class Input extends BaseElementWithValue{
 
 	public function __construct(
 		string $text,
-		#[Immutable] public /*readonly*/ string $placeholder,
-		#[Immutable] public /*readonly*/ string $default = "",
+		 public /*readonly*/ string $placeholder,
+		 public /*readonly*/ string $default = "",
 	){
 		parent::__construct($text);
 	}

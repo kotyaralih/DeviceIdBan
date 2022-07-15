@@ -7,7 +7,7 @@ namespace Frago9876543210\forms;
 
 use pocketmine\form\Form;
 
-#[Immutable]
+
 abstract class BaseForm implements Form{
 
 	public function __construct(public /*readonly*/ string $title){ }

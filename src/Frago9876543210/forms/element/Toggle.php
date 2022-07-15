@@ -14,7 +14,7 @@ class Toggle extends BaseElementWithValue{
 
 	public function __construct(
 		string $text,
-		#[Immutable] public /*readonly*/ bool $default = false,
+		adonly*/ bool $default = false,
 	){
 		parent::__construct($text);
 	}

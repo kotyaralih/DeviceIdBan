@@ -18,8 +18,8 @@ abstract class BaseSelector extends BaseElementWithValue{
 	/** @phpstan-param list<string> $options */
 	public function __construct(
 		string $text,
-		#[Immutable] public /*readonly*/ array $options,
-		#[Immutable] public /*readonly*/ int $default = 0,
+		 public /*readonly*/ array $options,
+		 public /*readonly*/ int $default = 0,
 	){
 		parent::__construct($text);
 	}
