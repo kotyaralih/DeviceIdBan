@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Frago9876543210\forms\menu;
 
-use JetBrains\PhpStorm\Immutable;
+
 
 #[Immutable]
 class Image implements \JsonSerializable{

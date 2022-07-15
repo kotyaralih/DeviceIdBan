@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Frago9876543210\forms;
 
-use JetBrains\PhpStorm\Immutable;
+
 use pocketmine\form\FormValidationException;
 use pocketmine\player\Player;
 use pocketmine\utils\Utils;
