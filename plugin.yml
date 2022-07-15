@@ -1,0 +1,19 @@
+name: DeviceIdBan
+main: kotyaralih\DeviceIdBan\Main
+api: 4.0.0
+version: 1.0.0
+author: kotyaralih
+commands:
+ deviceban:
+  aliases: [dban, bandevice]
+  description: Ban player's device id
+  permission: deviceban.use
+ devicepardon:
+  aliases: [dpardon, pardondevice]
+  description: Unban player's device id
+  permission: deviceban.use
+
+permissions:
+ deviceban.use:
+  description: DeviceIdBan Permission.
+  default: op
