@@ -16,7 +16,6 @@ class DPardonForm extends CustomForm
     /**
      * Form constructor
      *
-     * @param Player $player
      */
     public function __construct(Main $plugin)
     {
