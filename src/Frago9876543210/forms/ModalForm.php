@@ -22,14 +22,14 @@ class ModalForm extends BaseForm{
 		public /*readonly*/ string $button1 = "gui.yes",
 		public /*readonly*/ string $button2 = "gui.no",
 	){
-		/** @phpstan-ignore-next-line */
+		
 		Utils::validateCallableSignature(function(Player $player, bool $choice){ }, $onSubmit);
 		parent::__construct($title);
 	}
 
 	/** @phpstan-param \Closure(Player) : mixed $onConfirm */
 	public static function confirm(string $title, string $content, \Closure $onConfirm) : self{
-		/** @phpstan-ignore-next-line */
+		
 		Utils::validateCallableSignature(function(Player $player){ }, $onConfirm);
 		return new self($title, $content, static function(Player $player, bool $response) use ($onConfirm) : void{
 			if($response){

@@ -6,7 +6,7 @@ namespace Frago9876543210\forms\menu;
 
 
 
-#[Immutable(Immutable::PRIVATE_WRITE_SCOPE)]
+
 class Button implements \JsonSerializable{
 
 	public function __construct(public /*readonly*/ string $text, public /*readonly*/ ?Image $image = null, private ?int $value = null){ }

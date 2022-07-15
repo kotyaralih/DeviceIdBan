@@ -28,11 +28,11 @@ class MenuForm extends BaseForm{
 		 private /*readonly*/ ?\Closure $onClose = null,
 	){
 		if($onSubmit !== null){
-			/** @phpstan-ignore-next-line */
+			
 			Utils::validateCallableSignature(function(Player $player, Button $selected){ }, $onSubmit);
 		}
 		if($onClose !== null){
-			/** @phpstan-ignore-next-line */
+			
 			Utils::validateCallableSignature(function(Player $player){ }, $onClose);
 		}
 		parent::__construct($title);

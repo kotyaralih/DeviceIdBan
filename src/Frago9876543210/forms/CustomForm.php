@@ -27,10 +27,10 @@ class CustomForm extends BaseForm{
 		 private /*readonly*/ \Closure $onSubmit,
 		 private /*readonly*/ ?\Closure $onClose = null,
 	){
-		/** @phpstan-ignore-next-line */
+		
 		Utils::validateCallableSignature(function(Player $player, CustomFormResponse $response){ }, $onSubmit);
 		if($onClose !== null){
-			/** @phpstan-ignore-next-line */
+			
 			Utils::validateCallableSignature(function(Player $player){ }, $onClose);
 		}
 		parent::__construct($title);

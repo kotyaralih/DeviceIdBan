@@ -16,7 +16,7 @@ class DBanForm extends CustomForm
     /**
      * Form constructor
      *
-     * @param Player $sender
+     * @param Player $player
      */
     public function __construct(Main $plugin, array $players)
     {
