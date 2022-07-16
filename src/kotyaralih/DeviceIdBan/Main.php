@@ -31,7 +31,7 @@ class Main extends PluginBase implements Listener{
 	}
 	
 	public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args) :bool { // should be fixed
-		if(strtolower($cmd->getName()) == "deviceban"){
+		if(strtolower($cmd->getName()) === "deviceban"){
 			if(count($args) < 2){
 				if(!$sender instanceof Player){
 					$sender->sendMessage("Usage: /deviceban <player> <reason>");
@@ -50,7 +50,7 @@ class Main extends PluginBase implements Listener{
 				$sender->sendForm(new forms\DBanForm($this, $players));
 				return true;
 			}
-			if($this->getServer()->getPlayerExact($args[0]) == null){
+			if($this->getServer()->getPlayerExact($args[0]) === null){
 				$sender->sendMessage("Player " . $args[0] . " not found!");
 				return true;
 			}
@@ -72,7 +72,7 @@ class Main extends PluginBase implements Listener{
 			$banned->kick($reasonmsg);
 			return true;
 		}
-		if(strtolower($cmd->getName()) == "devicepardon"){
+		if(strtolower($cmd->getName()) === "devicepardon"){
 			if(count($args) < 1){
 				if(!$sender instanceof Player){
 					$sender->sendMessage("Usage: /devicepardon <player>");
