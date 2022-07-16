@@ -10,7 +10,7 @@ use pocketmine\command\{Command, CommandSender};
 
 class Main extends PluginBase implements Listener{
         
-        private $dbans;
+        public $dbans;
         
 	public function onEnable() : void{
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
@@ -30,7 +30,7 @@ class Main extends PluginBase implements Listener{
 		}
 	}
 	
-	public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args) :void { // should be non-returnable
+	public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args) :mixed { // should be mixed
 		if(strtolower($cmd->getName()) == "deviceban"){
 			if(count($args) < 2){
 				if(!$sender instanceof Player){
