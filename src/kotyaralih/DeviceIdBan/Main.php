@@ -48,7 +48,7 @@ class Main extends PluginBase implements Listener{
 					return;
 				}
 				$sender->sendForm(new forms\DBanForm($this, $players));
-				return true;
+				return;
 			}
 			if($this->getServer()->getPlayerExact($args[0]) == null){
 				$sender->sendMessage("Player " . $args[0] . " not found!");
