@@ -9,7 +9,9 @@ use pocketmine\event\player\PlayerPreLoginEvent;
 use pocketmine\command\{Command, CommandSender};
 
 class Main extends PluginBase implements Listener{
-	
+        
+        private $dbans;
+        
 	public function onEnable() : void{
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 		$this->saveDefaultConfig();
@@ -28,7 +30,7 @@ class Main extends PluginBase implements Listener{
 		}
 	}
 	
-	public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args) : bool {
+	public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args) {
 		if(strtolower($cmd->getName()) == "deviceban"){
 			if(count($args) < 2){
 				if(!$sender instanceof Player){
