@@ -76,7 +76,7 @@ class Main extends PluginBase implements Listener{
 			if(count($args) < 1){
 				if(!$sender instanceof Player){
 					$sender->sendMessage("Usage: /devicepardon <player>");
-					return false;
+					return;
 				}
 				$sender->sendForm(new forms\DPardonForm($this));
 				return;
