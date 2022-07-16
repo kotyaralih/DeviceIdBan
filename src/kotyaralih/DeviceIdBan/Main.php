@@ -79,7 +79,7 @@ class Main extends PluginBase implements Listener{
 					return true;
 				}
 				$sender->sendForm(new forms\DPardonForm($this));
-				return;
+				return true;
 			}
 			$dban = $this->dbans->query("SELECT * FROM bans WHERE name = '$args[0]'")->fetchArray(SQLITE3_ASSOC);
 			if(!$dban){
