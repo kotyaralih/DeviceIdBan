@@ -30,12 +30,12 @@ class Main extends PluginBase implements Listener{
 		}
 	}
 	
-	public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args) :mixed { // should be mixed
+	public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args) :bool { // should be fixed
 		if(strtolower($cmd->getName()) == "deviceban"){
 			if(count($args) < 2){
 				if(!$sender instanceof Player){
 					$sender->sendMessage("Usage: /deviceban <player> <reason>");
-					return;
+					return true;
 				}
 				$players = [];
 				foreach($this->getServer()->getOnlinePlayers() as $player){
@@ -45,18 +45,18 @@ class Main extends PluginBase implements Listener{
 				}
 				if($players == []){
 					$sender->sendMessage("No players online");
-					return;
+					return true;
 				}
 				$sender->sendForm(new forms\DBanForm($this, $players));
-				return;
+				return true;
 			}
 			if($this->getServer()->getPlayerExact($args[0]) == null){
 				$sender->sendMessage("Player " . $args[0] . " not found!");
-				return;
+				return true;
 			}
 			if($sender == $this->getServer()->getPlayerExact($args[0])){
 				$sender->sendMessage("You can't ban yourself!");
-				return;
+				return true;
 			}
 			$banned = $this->getServer()->getPlayerExact($args[0]);
 			$bannedname = $banned->getName();
@@ -70,13 +70,13 @@ class Main extends PluginBase implements Listener{
 			$reasonmsg = str_replace("{bannedby}", $sendername, $reasonmsg);
 			$reasonmsg = str_replace("{reason}", $reason, $reasonmsg);
 			$banned->kick($reasonmsg);
-			return;
+			return true;
 		}
 		if(strtolower($cmd->getName()) == "devicepardon"){
 			if(count($args) < 1){
 				if(!$sender instanceof Player){
 					$sender->sendMessage("Usage: /devicepardon <player>");
-					return;
+					return true;
 				}
 				$sender->sendForm(new forms\DPardonForm($this));
 				return;
@@ -84,11 +84,11 @@ class Main extends PluginBase implements Listener{
 			$dban = $this->dbans->query("SELECT * FROM bans WHERE name = '$args[0]'")->fetchArray(SQLITE3_ASSOC);
 			if(!$dban){
 				$sender->sendMessage($args[0] . "'s device id is not banned!");
-				return;
+				return true;
 			}
 			$sender->sendMessage("Succesfully unbanned " . $args[0] . "'s device id");
 			$this->dbans->query("DELETE FROM bans WHERE name = '$args[0]'");
-			return;
+			return true;
 		}
 	}
 	
