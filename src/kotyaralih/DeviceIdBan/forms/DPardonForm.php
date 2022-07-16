@@ -12,7 +12,9 @@ use pocketmine\utils\TextFormat;
 
 class DPardonForm extends CustomForm
 {
-
+    
+    private Main $plugin;
+    
     /**
      * Form constructor
      *
