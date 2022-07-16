@@ -30,7 +30,7 @@ class Main extends PluginBase implements Listener{
 		}
 	}
 	
-	public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args) :bool {
+	public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args) :void { // should be non-returnable
 		if(strtolower($cmd->getName()) == "deviceban"){
 			if(count($args) < 2){
 				if(!$sender instanceof Player){
