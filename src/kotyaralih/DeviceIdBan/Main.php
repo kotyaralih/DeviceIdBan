@@ -9,7 +9,9 @@ use pocketmine\event\player\PlayerPreLoginEvent;
 use pocketmine\command\{Command, CommandSender};
 
 class Main extends PluginBase implements Listener{
-	
+        
+        public $dbans;
+        
 	public function onEnable() : void{
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 		$this->saveDefaultConfig();
@@ -28,12 +30,12 @@ class Main extends PluginBase implements Listener{
 		}
 	}
 	
-	public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args) : bool {
-		if(strtolower($cmd->getName()) == "deviceban"){
+	public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args) :bool { // should be fixed
+		if(strtolower($cmd->getName()) === "deviceban"){
 			if(count($args) < 2){
 				if(!$sender instanceof Player){
 					$sender->sendMessage("Usage: /deviceban <player> <reason>");
-					return false;
+					return true;
 				}
 				$players = [];
 				foreach($this->getServer()->getOnlinePlayers() as $player){
@@ -43,18 +45,18 @@ class Main extends PluginBase implements Listener{
 				}
 				if($players == []){
 					$sender->sendMessage("No players online");
-					return false;
+					return true;
 				}
 				$sender->sendForm(new forms\DBanForm($this, $players));
 				return true;
 			}
-			if($this->getServer()->getPlayerExact($args[0]) == null){
+			if($this->getServer()->getPlayerExact($args[0]) === null){
 				$sender->sendMessage("Player " . $args[0] . " not found!");
-				return false;
+				return true;
 			}
 			if($sender == $this->getServer()->getPlayerExact($args[0])){
 				$sender->sendMessage("You can't ban yourself!");
-				return false;
+				return true;
 			}
 			$banned = $this->getServer()->getPlayerExact($args[0]);
 			$bannedname = $banned->getName();
@@ -70,11 +72,11 @@ class Main extends PluginBase implements Listener{
 			$banned->kick($reasonmsg);
 			return true;
 		}
-		if(strtolower($cmd->getName()) == "devicepardon"){
+		if(strtolower($cmd->getName()) === "devicepardon"){
 			if(count($args) < 1){
 				if(!$sender instanceof Player){
 					$sender->sendMessage("Usage: /devicepardon <player>");
-					return false;
+					return true;
 				}
 				$sender->sendForm(new forms\DPardonForm($this));
 				return true;
@@ -82,7 +84,7 @@ class Main extends PluginBase implements Listener{
 			$dban = $this->dbans->query("SELECT * FROM bans WHERE name = '$args[0]'")->fetchArray(SQLITE3_ASSOC);
 			if(!$dban){
 				$sender->sendMessage($args[0] . "'s device id is not banned!");
-				return false;
+				return true;
 			}
 			$sender->sendMessage("Succesfully unbanned " . $args[0] . "'s device id");
 			$this->dbans->query("DELETE FROM bans WHERE name = '$args[0]'");

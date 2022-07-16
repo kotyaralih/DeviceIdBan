@@ -12,7 +12,9 @@ use pocketmine\utils\TextFormat;
 
 class DBanForm extends CustomForm
 {
-
+    
+    private Main $plugin;
+    
     /**
      * Form constructor
      *
